@@ -7,3 +7,30 @@ form.login_form {
     border-radius: 5px;
     padding: 10px;
 }
+
+h1 {
+    color: red;
+}
+
+.texts p{
+    font-size: 28px;
+    width: 800px;
+}
+
+.texts p:nth-child(1),
+.texts p:nth-child(3) {
+    background-color: grey;
+}
+
+.texts p:nth-child(2) {
+    background-color: lightgreen;
+}
+
+.texts p:nth-child(4) {
+    background-color: yellow;
+}
+
+.texts p:nth-child(5) {
+    background-color: red;
+}
+
