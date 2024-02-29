@@ -176,5 +176,15 @@ def choiches(planet_name):
     return render_template("work.html", data=data)
 
 
+@app.route("/results/<nickname>/<int:level>/<float:rating>")
+def results(nickname, level, rating):
+    data = {
+        "nickname": nickname,
+        "level": level,
+        "rating": rating
+    }
+    return render_template("result.html", data=data)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
