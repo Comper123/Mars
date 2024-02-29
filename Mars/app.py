@@ -166,6 +166,15 @@ def form_sample():
         print(request.form['accept'])
         print(request.form['sex'])
         return "Форма отправлена"
-    
+
+
+@app.route("/choice/<planet_name>")
+def choiches(planet_name):
+    data = {
+        "planet_name": planet_name
+    }
+    return render_template("work.html", data=data)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
