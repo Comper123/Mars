@@ -186,5 +186,46 @@ def results(nickname, level, rating):
     return render_template("result.html", data=data)
 
 
+@app.route("/carousel")
+def slider():
+    return f"""
+    <head>
+        <title>Пейзажи Марса</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1 class="text-center">Пейзажи Марса</h1>
+        <div id="myCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item">
+              <img class="bd-placeholder-img" style="object-fit: cover; height: 100vh;" src="{url_for('static', filename="img/marc1.png")}" width="100%" height="80vh" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            </div>
+            <div class="carousel-item">
+              <img class="bd-placeholder-img" style="object-fit: cover; height: 100vh;" src="{url_for('static', filename="img/marc2.png")}" width="100%" height="80vh" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            </div>
+            <div class="carousel-item active">
+              <img class="bd-placeholder-img" style="object-fit: cover; height: 100vh;" src="{url_for('static', filename="img/marc3.png")}" width="100%" height="80vh" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    </body>
+    """
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
