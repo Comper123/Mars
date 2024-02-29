@@ -186,6 +186,45 @@ def results(nickname, level, rating):
     return render_template("result.html", data=data)
 
 
+@app.route('/load_photo', methods=['POST', 'GET'])
+def sample_file_upload():
+    if request.method == 'GET':
+        return f'''<!doctype html>
+                        <html lang="en">
+                          <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                             <link rel="stylesheet"
+                             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                             crossorigin="anonymous">
+                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
+                            <title>Пример загрузки файла</title>
+                          </head>
+                          <body>
+                            <h1 class="text-center text-dark mt-5">Анкета претендента</h1>
+                            <h4 class="text-center">на участие в миссии</h4>
+                            <form class="login_form" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="photo">Приложите фотографию</label>
+                                    <input type="file" class="form-control-file" id="photo" name="file">
+                                </div>
+
+                                <img class="mt-2" src="{url_for('static', filename='img/marcianin.png')}">
+                                <br>
+                                <button type="submit" class=" mt-2 btn btn-primary">Отправить</button>
+                            </form>
+                          </body>
+                        </html>'''
+    elif request.method == 'POST':
+        f = request.files['file']
+        f.save(f"static/img/{f.filename}")
+        return f"""
+        <p>Форма отправлена</p>
+
+        """
+    
+
 @app.route("/carousel")
 def slider():
     return f"""
